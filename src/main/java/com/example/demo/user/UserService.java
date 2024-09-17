@@ -50,8 +50,7 @@ public class UserService {
         return userRepo.findByUsername(username);
     }
 
-    public Mono<UserEntity> getMe(Authentication authentication) {
-        CustomPrincipal customPrincipal = (CustomPrincipal) authentication.getPrincipal();
-        return getUserById(customPrincipal.getUserId());
+    public Mono<UserEntity> getMe(CustomPrincipal authentication) {
+        return getUserById(authentication.getUserId());
     }
 }
